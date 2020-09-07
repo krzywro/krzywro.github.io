@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog</title>
+    <link>/</link>
+    <description>Recent content on Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pl-pl</language>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>O autorze</title>
+      <link>/autor/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/autor/</guid>
+      <description>Krzysztof Wróblewski.
+Niezły introwertyk, więc wylewny nie będzie ;)
+Z zawodu programista, po godzinach bawi się w DevOps/SysAdmina.
+Pasjonat nowych technologi, gier i dobrej beletrystyki fantasy/sci-fi/thrillerów. Nie pogardzi też ,,suchymi&amp;rsquo;&amp;rsquo; planszówkami.</description>
+    </item>
+    
+  </channel>
+</rss>
