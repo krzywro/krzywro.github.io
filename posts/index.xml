@@ -5,11 +5,12 @@
     <link>/posts/</link>
     <description>Recent content in Posts on Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>pl-pl</language><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <language>pl-pl</language>
+    <lastBuildDate>Sun, 13 Mar 2022 21:30:00 +0100</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Migracja Hue&#43;Z2M -&gt; samodzielny Z2M -&gt; Z2M w Home Assistant OS</title>
       <link>/posts/zigbee2mqtt-in-haos/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 13 Mar 2022 21:30:00 +0100</pubDate>
       
       <guid>/posts/zigbee2mqtt-in-haos/</guid>
       <description>Ostatnimi czasy zdecydowałem się wprowadzić trochę zmian do mojego &amp;ldquo;smart home&amp;rdquo;. Postanowiłem w końcu połączyć dwie sieci Zigbee (jedna na zigbee2mqtt/Conbee II - wytułowe Z2M, druga Philips Hue) w jedną, aby poprawić zasięg niektórych czujników, zmiejszyć szum w powietrzu, a w końcu aby zwolnić jeden port w switchu :)
