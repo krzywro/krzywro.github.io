@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blog</title>
-    <link>/</link>
-    <description>Recent content on Blog</description>
+    <title>Hue on Blog</title>
+    <link>/tags/hue/</link>
+    <description>Recent content in Hue on Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>pl-pl</language><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <language>pl-pl</language><atom:link href="/tags/hue/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Migracja Hue&#43;Z2M -&gt; samodzielny Z2M -&gt; Z2M w Home Assistant OS</title>
       <link>/posts/zigbee2mqtt-in-haos/</link>
@@ -15,18 +15,6 @@
       <description>Ostatnimi czasy zdecydowałem się wprowadzić trochę zmian do mojego &amp;ldquo;smart home&amp;rdquo;. Postanowiłem w końcu połączyć dwie sieci Zigbee (jedna na zigbee2mqtt/Conbee II - wytułowe Z2M, druga Philips Hue) w jedną, aby poprawić zasięg niektórych czujników, zmiejszyć szum w powietrzu, a w końcu aby zwolnić jeden port w switchu :)
 Bazowo w Z2M miałem już kilkanaście urządzeń:
  6 głowic grzejnikowych typu Saswell SEA802 tutaj brandowanych jako TuYa GTZ03 2 czujniki temperatury i wilgoci TuYa TT001ZAV20 4 czujniki temperatury, wilgoci i ciśenienia atmosferycznego Aqara WSDCGQ11LM 2 czujniki temperatury i wilogci z wyświetlaczem LED TuYa TS0201 - nie polecam, żre baterie jak szalone, średnio wymieniam co 6-8 tygodni po 2xAAA do każdego, poza tym raportują zmianę temperatury jeśli wyniosła minimum 0.</description>
-    </item>
-    
-    <item>
-      <title>O autorze</title>
-      <link>/autor/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/autor/</guid>
-      <description>Krzysztof Wróblewski.
-Niezły introwertyk, więc wylewny nie będzie ;)
-Z zawodu programista, po godzinach bawi się w DevOps/SysAdmina.
-Pasjonat nowych technologi, gier i dobrej beletrystyki fantasy/sci-fi/thrillerów. Nie pogardzi też ,,suchymi&amp;rsquo;&amp;rsquo; planszówkami.</description>
     </item>
     
   </channel>

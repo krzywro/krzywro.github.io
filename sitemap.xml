@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/categories/</loc>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>/tags/home-assistant/</loc>
+  </url><url>
+    <loc>/tags/hue/</loc>
+  </url><url>
+    <loc>/posts/zigbee2mqtt-in-haos/</loc>
+  </url><url>
+    <loc>/tags/mosquitto/</loc>
+  </url><url>
     <loc>/autor/</loc>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>/posts/</loc>
+  </url><url>
     <loc>/tags/</loc>
+  </url><url>
+    <loc>/tags/zigbee2mqtt/</loc>
   </url>
-  
 </urlset>
