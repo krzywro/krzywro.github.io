@@ -123,7 +123,7 @@ Bazowo w Z2M miałem już kilkanaście urządzeń:
   <div class="post-meta">
     
       <span class="post-date">
-        2022-03-13 [Zaktualizowano: 2022-03-13]
+        2022-03-13 [Zaktualizowano: 2022-03-17]
       </span>
     
     
@@ -154,10 +154,11 @@ Bazowo w Z2M miałem już kilkanaście urządzeń:
 <li>6 głowic grzejnikowych typu <a href="https://www.zigbee2mqtt.io/devices/SEA801-Zigbee_SEA802-Zigbee.html#saswell-sea801-zigbee%252Fsea802-zigbee">Saswell SEA802</a> tutaj brandowanych jako TuYa GTZ03</li>
 <li>2 czujniki temperatury i wilgoci <a href="https://www.zigbee2mqtt.io/devices/TT001ZAV20.html#tuya-tt001zav20">TuYa TT001ZAV20</a></li>
 <li>4 czujniki temperatury, wilgoci i ciśenienia atmosferycznego <a href="https://www.zigbee2mqtt.io/devices/WSDCGQ11LM.html#xiaomi-wsdcgq11lm">Aqara WSDCGQ11LM</a></li>
-<li>2 czujniki temperatury i wilogci z wyświetlaczem LED <a href="https://www.zigbee2mqtt.io/devices/TS0201.html#tuya-ts0201">TuYa TS0201</a> - nie polecam, żre baterie jak szalone, średnio wymieniam co 6-8 tygodni po 2xAAA do każdego, poza tym raportują zmianę temperatury dopiero jeśli wyniosła minimum 0.7℃ od ostatniego raportowania</li>
+<li>2 czujniki temperatury i wilogci z wyświetlaczem LED <a href="https://www.zigbee2mqtt.io/devices/TS0201.html#tuya-ts0201">TuYa TS0201</a> - nie polecam, żre baterie jak szalone, średnio wymieniam co 6-8 tygodni po 2xAAA do każdego, poza tym raportują zmianę temperatury dopiero jeśli wyniosła minimum 0.7°C od ostatniego raportowania</li>
 <li>&ldquo;magiczną kostkę&rdquo; <a href="https://www.zigbee2mqtt.io/devices/MFKZQ01LM.html#xiaomi-mfkzq01lm">Aqara Magic Cube MFKZQ01LM</a></li>
 <li>czujnik wstrząsów <a href="https://www.zigbee2mqtt.io/devices/DJT11LM.html#xiaomi-djt11lm">Aqara DJT11LM</a></li>
 </ul>
+<p><img src="z2m_initial.webp" alt="Stan początkowy zigbee2mqtt"></p>
 <p>W sieci Hue miałem o wiele więcej urządzeń:</p>
 <ul>
 <li>20 <a href="https://www.zigbee2mqtt.io/devices/8718696695203.html#philips-8718696695203">Hue white ambiance E14</a></li>
@@ -204,12 +205,14 @@ Bazowo w Z2M miałem już kilkanaście urządzeń:
 Payload: <code>{&quot;hue_power_on_behavior&quot;: &quot;recover&quot;}</code></p>
 <p>Po szczegóły i dostępne opcje dla tego wpisu odsyłam do sekcji <a href="https://www.zigbee2mqtt.io/devices/8718696695203.html#power-on-behavior">Power on behavior</a> dokumentacji Z2M dla dowolnego światła Hue. Zaznaczam, że <code>Przyjazna nazwa żarówki</code> musi być dokładnie podana, wliczając polskie znaki - jeśli takie w niej występują. MQTT Explorer upraszcza sprawę, ponieważ można w nim wygodnie skopiować właściwy prefix tematu, mając otwartą sekcję komunikatów danego urządzenia. Pamiętaj aby nie dodać przypadkiem na końcu ukośnika, bo to będzie wtedy zupełnie inny temat z punktu widzenia MQTT.</p>
 <p>Ze scenami poszło już prosto, mając otwarte ustawienia grupy dostosowywałem ustawienia świateł i zapisywałem pod kolejnymi numerami scen w danej grupie. ID sceny w obrębie jednej grupy musi być unikalne. Jeżeli chcę coś zmienić w scenie, to muszę ją przywołać, zmienić co potrzeba, usunąć starą scenę i pod tym samym ID zapisać nową. ID będzie mi później potrzebne w Home Assistant do wprowadzenia bezpośredniej ich obsługi.</p>
+<p><img src="z2m_groups.webp" alt="Grupy Zigbee"></p>
 <h1 id="migracja-etap-3-samodzielna-instancja-z2m--mqtt---addony-w-ha-os">Migracja etap 3: samodzielna instancja Z2M + MQTT -&gt; Addony w HA OS<a href="#migracja-etap-3-samodzielna-instancja-z2m--mqtt---addony-w-ha-os" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
 <p>Do tej pory Z2M i MQTT działały na Raspberry Pi Zero W. Home Assitant na Raspberry Pi 4. Jak można się domyślać, automatyzacje były zatem zależne od połączenia sieciowego. Posiadając sprzęt prosumencki (UniFi), nie uruchamia się on przeciętne urządzenia do domu, tylko startuje powoli, dokonując diagnostyki. I tak ze względu na specyficzny rozkład sieci, po powrocie zasilania AP mam dostępny po około 4-5 minutach. Tyle zatem HA nie wie co się dzieje w sieci Zigbee. Chcąc uniknąć ponownego parowania i ustawiania sieci Zigbee postanowiłem przenieść kombinację Mosquitto (broker MQTT) + zigbee2mqtt do oficjalnych addonów w Home Assistant Operating System (HAOS). Zrobiłem to w dwóch krokach:</p>
 <ol>
 <li>Migracja Mosquitto</li>
 <li>Migracja zigbee2mqtt</li>
 </ol>
+<p><img src="addons.webp" alt="Addony"></p>
 <h2 id="moquitto">Moquitto<a href="#moquitto" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <p>Pierwszy krok był bajecznie prosty: instalacja addonu <code>Mosquitto broker</code>, utworzenie użytkownika w HA (wybrałem nazwę <code>mqtt</code> i dowolne hasło, które za chwilę będzie potrzebne, użytkownik tylko lokalny, bez administratora), ponieważ ten addon potrafi wykorzystać system użytkowników HA. W konfiguracji addonu dopisałem w konfiguracji</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">logins</span>:
@@ -223,9 +226,11 @@ Payload: <code>{&quot;hue_power_on_behavior&quot;: &quot;recover&quot;}</code></
 </span></span><span style="display:flex;"><span><span style="color:#f92672">experimental</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">new_api</span>: <span style="color:#66d9ef">true</span>
 </span></span></code></pre></div><p>musi pozostać bez zmian, aby można było załadować UI Z2M w HA (a nie będzie ono bezpośrednio dostępne - ustawienia addonu nie pzwalają na wystawienie portu UI poza sieć dockera).</p>
+<p><img src="z2m_directory.webp" alt="Folder konfiguracji addonu"></p>
 <h2 id="test">Test<a href="#test" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <p>Wyłączenie RPi0, przepięcie Conbee II do RPi4 na przedłużaczu USB (z doświadzenia oraz komentarzy w internecie wiem, że bazpośrednie wpięcie będzie powodowało za duże zakłócenia spowodowane chyba wbudowanym WiFi i BT w RPi4, ale nie sprawdzałem jeszcze czy wyłączenie w konfiguracji startowej jakoś na to wpłynie).
 Start addonu Z2M iii&hellip; fiasko. Ale jeśli czytasz to po kolei, to już wiesz że pierwsza próba była bez <code>adapter: deconz</code>. Dopisane, restart addonu iii&hellip; chyba działa. Wartości na sensorach się zaczynają aktualizować, ale UI Z2M się nie ładuje. Okazało się że z rozpędu próbowałem ustawić port jak na poprzedniej instancji. Przywróciłem 8099 i finalnie już wszystko działa jak należy.</p>
+<p><img src="mqtt.webp" alt="MQTT wykrywa urządzenia"></p>
 <p>Jeszcze tylko zrobić pełny backup i mogę odpocząć :)</p>
 
       </div></div>
